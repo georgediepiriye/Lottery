@@ -59,8 +59,8 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     //function to enter lottery
     function enterLottery() public payable {
-        require(s_lotteryState == LotteryState.OPEN, "Lottery not Open");
         require(msg.value >= i_entranceFee, "Not enough ETH");
+        require(s_lotteryState == LotteryState.OPEN, "Lottery not Open");
         players.push(payable(msg.sender));
         //emit an event when we update a dynamic array or mapping
         emit LotteryEnter(msg.sender);
@@ -153,5 +153,9 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     function getRequestConfirmations() public pure returns (uint256) {
         return REQUEST_CONFIRMATIONS;
+    }
+
+    function getInterval() public view returns (uint256) {
+        return i_interval;
     }
 }

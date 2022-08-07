@@ -25,6 +25,9 @@ module.exports = {
       accounts: [RINKEBY_PRIVATE_KEY],
     },
   },
+  gasReporter: {
+    enabled: false,
+  },
   solidity: "0.8.7",
   namedAccounts: {
     deployer: {
@@ -32,6 +35,9 @@ module.exports = {
     },
     player: {
       default: 1,
+    },
+    mocha: {
+      timeout: 200000,
     },
   },
 };
