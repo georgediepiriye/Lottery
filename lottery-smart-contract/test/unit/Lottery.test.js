@@ -106,6 +106,7 @@ const {
           ]);
           await network.provider.request({ method: "evm_mine", params: [] });
           const { upkeepNeeded } = await lottery.callStatic.checkUpkeep("0x"); // upkeepNeeded = (timePassed && isOpen && hasBalance && hasPlayers)
+          console.log(upkeepNeeded);
           assert.equal(upkeepNeeded, false);
         });
         it("returns true if enough time has passed, has players, eth, and is open", async () => {
